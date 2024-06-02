@@ -26,31 +26,43 @@
             />
           </div>
           <div class="col-md-12 col-lg-6">
-            <div th:if="${mensaje}">
-              <p class="error rounded" th:text="${mensaje}"></p>
-            </div>
             <form
               class="boxxy fondoGradiente rounded-3"
-              th:action="@{/procesarLogin}"
-              th:object="${usuarioParaLogin}"
+              id="loginSubmit"
+              th:action="@{/login}"
               method="post"
             >
               <div class="row">
-                <h2 class="text-center text-light">Inicio de sesión</h2>
+                <h2 class="text-center text-light">Registro de usuario</h2>
               </div>
-
-              <!-- Usuario -->
+              <!-- Nombre -->
               <div class="row">
                 <div class="col">
-                  <label for="user" class="text-light">Usuario: </label>
+                  <label for="user" class="text-light">Nombre: </label>
+                </div>
+                <div class="col">
+                  <input
+                    class="rounded"
+                    type="text"
+                    name="nombre"
+                    id="nombre"
+                    placeholder="Nombre del usuario"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="row">
+                <div class="col">
+                  <label for="user" class="text-light">Email: </label>
                 </div>
                 <div class="col">
                   <input
                     class="rounded"
                     type="email"
-                    th:field="${usuarioParaLogin.email}" id="email" name="email"                    
-                    placeholder="Correo electrónico"
-                    required
+                    name="email"
+                    id="email"
+                    placeholder="Email del usuario"
                   />
                 </div>
               </div>
@@ -64,9 +76,9 @@
                   <input
                     class="rounded"
                     type="password"
-                    th:field="${usuarioParaLogin.contrasena}" id="contrasena" name="contrasena"
+                    name="clave"
+                    id="clave"
                     placeholder="Contraseña"
-                    required
                   />
                 </div>
               </div>
@@ -79,7 +91,8 @@
                   <button
                     type="submit"
                     class="boxxy btn btn-primary rounded"
-                    value="submit"
+                    name="sendLogin"
+                    id="sendLogin"
                   >
                     Enviar
                   </button>
@@ -88,7 +101,7 @@
                 <div class="col"></div>
               </div>
             </form>
-            <div>¿No tienes una cuenta? <a href="/templates/register.html">Regístrate</a></div>
+            <div>Ya tienes una cuenta? <a href="/templates/login.html" th:href="@{login.html}">Inicia sesión</a></div>
           </div>
         </div>
       </div>
