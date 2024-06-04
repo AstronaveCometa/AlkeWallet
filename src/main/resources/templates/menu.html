@@ -19,71 +19,85 @@
           <h1 class="text-center boxxy">ALKE WALLET</h1>
         </div>
         <div class="col-2 boxxy text-center">
-          <a href="login.html" th:href="@{login.html}" class="textoBlanco"
-            >Cerrar sesión</a
-          >
+          <a th:href="@{/logout}" class="textoBlanco">Cerrar sesión</a>
         </div>
       </div>
     </header>
     <main>
-<div class="container boxxy text-center">
-  <h2><p>Bienvenid@, </p><p th:text="${usuarioActual.nombre}"></p></h2>
-</div>
+      <div class="container boxxy text-center">
+        <h2>
+        <p>Bienvenid@, <span th:text="${usuarioActual.nombre}"></span></p>
+          
+
+
+          <p>Tu saldo es: </p></div>
+          <div class="col-4"><p th:text="${usuarioActual.saldo}"></p></div>
+        </div>
+
+        </h2>
+      </div>
       <div class="container">
         <div class="row">
           <!-- Botón para ir a Depósitos -->
-          <a href="deposit.html" th:href="@{deposit.html}">
-            <button class="col-lg-4 col-md-12 boxxy fondoGradiente botonMenu">
-              <div class="row text-center"><h2>Depósitos</h2></div>
-              <div class="row container">
-                <img
-                  th:src="@{/img/Tarjeta de crédito.png}"
-                  alt="Tarjeta"
-                  class="fotoMenu"
-                />
-              </div>
-            </button>
-          </a>
+          <div class="col-lg-4 col-md-12">
+            <a th:href="@{/deposit}">
+              <button class="boxxy fondoGradiente botonMenu">
+                <div class="row text-center"><h2>Depósitos</h2></div>
+                <div class="row container">
+                  <img
+                    th:src="@{/img/Tarjeta de crédito.png}"
+                    alt="Tarjeta"
+                    class="fotoMenu"
+                  />
+                </div>
+              </button>
+            </a>
+          </div>
           <!-- Botón para ir a Envíos de dinero -->
-          <a href="sendmoney.html" th:href="@{sendmoney.html}">
-            <button
-              class="col-lg-4 col-md-12 boxxy fondoGradiente botonMenu"
-              id="buttonSend"
-            >
-              <div class="row text-center">
-                <h2>
-                  <a href="sendmoney.html" class="nav-link">Envíos de dinero</a>
-                </h2>
-              </div>
-              <div class="row container">
-                <img
-                  th:src="@{/img/Dolares.png}"
-                  alt="Tarjeta"
-                  class="fotoMenu"
-                />
-              </div>
-            </button>
-          </a>
+          <div class="col-lg-4 col-md-12">
+            <a href="sendmoney.html" th:href="@{sendmoney.html}">
+              <button class="boxxy fondoGradiente botonMenu" id="buttonSend">
+                <div class="row text-center">
+                  <h2>
+                    <a href="sendmoney.html" class="nav-link"
+                      >Envíos de dinero</a
+                    >
+                  </h2>
+                </div>
+                <div class="row container">
+                  <img
+                    th:src="@{/img/Dolares.png}"
+                    alt="Tarjeta"
+                    class="fotoMenu"
+                  />
+                </div>
+              </button>
+            </a>
+          </div>
           <!-- Botón para ir a Transacciones -->
-          <a href="transfer.html" th:href="@{transfer.html}">
-            <button
-              class="col-lg-4 col-md-12 boxxy fondoGradiente botonMenu"
-              id="buttonTransactions"
-            >
-              <div class="row text-center">
-                <h2>
-                  <a href="transactions.html" class="nav-link">Transacciones</a>
-                </h2>
-              </div>
-              <div class="row container">
-                <img
-                  th:src="@{/img/Trato.png}"
-                  alt="Tarjeta"
-                  class="fotoMenu"
-                />
-              </div>
-            </button>
-          </a>
+          <div class="col-lg-4 col-md-12">
+            <a href="transfer.html" th:href="@{transfer.html}">
+              <button
+                class="boxxy fondoGradiente botonMenu"
+                id="buttonTransactions"
+              >
+                <div class="row text-center">
+                  <h2>
+                    <a href="transactions.html" class="nav-link"
+                      >Transacciones</a
+                    >
+                  </h2>
+                </div>
+                <div class="row container">
+                  <img
+                    th:src="@{/img/Trato.png}"
+                    alt="Tarjeta"
+                    class="fotoMenu"
+                  />
+                </div>
+              </button>
+            </a>
+          </div>
         </div>
       </div>
     </main>

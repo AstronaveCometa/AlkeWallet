@@ -29,6 +29,9 @@
             <div th:if="${mensaje}">
               <p class="error rounded" th:text="${mensaje}"></p>
             </div>
+            <div th:if="${creacion}">
+              <p class="exito rounded" th:text="${creacion}"></p>
+            </div>
             <form
               class="boxxy fondoGradiente rounded-3"
               th:action="@{/procesarLogin}"
@@ -88,7 +91,7 @@
                 <div class="col"></div>
               </div>
             </form>
-            <div>¿No tienes una cuenta? <a href="/templates/register.html">Regístrate</a></div>
+            <div>¿No tienes una cuenta? <a th:href="@{/register}">Regístrate</a></div>
           </div>
         </div>
       </div>

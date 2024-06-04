@@ -11,6 +11,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.billeteraVirtual.entity.Usuario;
 import com.billeteraVirtual.service.UsuarioService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 	
@@ -27,17 +30,24 @@ public class LoginController {
 	@PostMapping(value = "/procesarLogin")
 	public String login(
 			@ModelAttribute(value = "usuarioParaLogin") Usuario usuarioParaLogin,
-			RedirectAttributes redirectAttributes,
-			Model model
+			RedirectAttributes redirectAttributes, HttpServletRequest request
 			) {
 		if(usuarioService.validarUsuario(usuarioParaLogin.getEmail(), usuarioParaLogin.getContrasena())) {
 			redirectAttributes.addFlashAttribute("mensaje", "Inicio de sesión exitoso");
 			Usuario usuarioActual = usuarioService.obtenerUsuarioPorEmail(usuarioParaLogin.getEmail());
-			model.addAttribute("usuarioActual", usuarioActual);
+			HttpSession session = request.getSession();
+			session.setAttribute("usuarioActual", usuarioActual);
 			return "redirect:/menu";
 		} else {
 			redirectAttributes.addFlashAttribute("mensaje", "Error en el inicio de sesión");
 			return "redirect:/login";
 		}		
+	}
+	
+	@GetMapping(value = "/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "login";
 	}
 }

@@ -1,8 +1,5 @@
 package com.billeteraVirtual.entity;
 
-
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -12,20 +9,10 @@ public class Usuario{
 
 	@Id
 	private int id;
-	
-	@Column
 	private String nombre;
-	
-	@Column
 	private String email;
-	
-	@Column
 	private String contrasena;
-	
-	@Column
 	private Long saldo;
-	
-	@Column
 	private String rol;
 	
 	

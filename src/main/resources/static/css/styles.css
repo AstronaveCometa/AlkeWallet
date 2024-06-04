@@ -13,6 +13,12 @@
     font-weight: bold;
 }
 
+.exito {
+  background-color: rgba(43, 255, 0, 0.484);
+  color: white;
+  font-weight: bold;
+}
+
 .table {
   background-color: rgba(0, 0, 0, 0);
 }

@@ -1,34 +1,17 @@
 package com.billeteraVirtual.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 public class Transaccion{
 
 	@Id
 	private int id;
-	
-	@Column
 	private String tipo;
-	
-	@Column
 	private Long monto;
-	
-	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private String fecha;
-	
-	@Column
 	private int idEmisor;
-	
-	@Column
 	private int idReceptor;
 	
 	public Transaccion() {
