@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.billeteraVirtual.entity.Transaccion;
-
 import com.billeteraVirtual.rowmapper.TransaccionRowMapper;
 
 @Repository
@@ -33,14 +32,20 @@ public class TransaccionDaoImpl implements TransaccionDao {
 	@Override
 	public Transaccion obtenerTransaccionPorID(int ID) {
 		String sql = "SELECT * FROM billeteraVirtual.Transacciones Where TRAN_ID = ?";
-		return (Transaccion) jdbcTemplate.query(sql, new Object[]{ID}, new TransaccionRowMapper());
+		List<Transaccion> resultado = jdbcTemplate.query(sql, new Object[]{ID}, new TransaccionRowMapper());
+		if(resultado.isEmpty()) {
+			return null;
+		} else {
+		Transaccion transaccion = resultado.get(0);
+		return transaccion;
+		}
 	}
 
 	@Transactional
 	@Override
 	public void insertarTransaccion(Transaccion transaccion) {
-		String sql = "INSERT INTO billeteraVirtual.Transacciones (TRAN_TYPE, TRAN_AMOUNT, TRAN_DATE, TRAN_USU_ID_SENDER, TRAN_USU_ID_RECEIVER) VALUES (?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, transaccion.getTipo(), transaccion.getMonto(), transaccion.getFecha(), transaccion.getIdEmisor(), transaccion.getIdReceptor());
+		String sql = "INSERT INTO billeteraVirtual.Transacciones (TRAN_TYPE, TRAN_AMOUNT, TRAN_DATE, TRAN_USU_ID_SENDER, TRAN_USU_ID_RECEIVER) VALUES (?, ?, CURRENT_TIMESTAMP, ?, ?)";
+		jdbcTemplate.update(sql, transaccion.getTipo(), transaccion.getMonto(), transaccion.getIdEmisor(), transaccion.getIdReceptor());
 	}
 	
 	@Transactional

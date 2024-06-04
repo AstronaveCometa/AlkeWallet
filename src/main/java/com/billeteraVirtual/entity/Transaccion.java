@@ -28,6 +28,20 @@ public class Transaccion{
 		this.idEmisor = idEmisor;
 		this.idReceptor = idReceptor;
 	}
+	
+	public Transaccion(String tipo, Long monto, Integer idEmisor, Integer idReceptor) {
+		super();
+		this.tipo = tipo;
+		this.monto = monto;
+		this.idEmisor = idEmisor;
+		this.idReceptor = idReceptor;
+	}
+	
+	public Transaccion(Long monto, Integer idReceptor) {
+		super();
+		this.monto = monto;
+		this.idReceptor = idReceptor;
+	}
 
 	public int getId() {
 		return id;

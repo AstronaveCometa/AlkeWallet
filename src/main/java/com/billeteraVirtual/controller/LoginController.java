@@ -45,9 +45,11 @@ public class LoginController {
 	}
 	
 	@GetMapping(value = "/logout")
-	public String logout(HttpServletRequest request) {
+	public String logout(HttpServletRequest request, Model modelo) {
 		HttpSession session = request.getSession();
 		session.invalidate();
+		Usuario usuarioParaLogin = new Usuario();
+		modelo.addAttribute("usuarioParaLogin", usuarioParaLogin);
 		return "login";
 	}
 }
