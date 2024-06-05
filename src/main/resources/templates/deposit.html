@@ -67,7 +67,7 @@
                 th:object="${transaccionActual}" method="post">
                     <label for="monto" class="col">Monto a depositar: </label>
                     <input class="col" type="number" th:field="${transaccionActual.monto}" id="monto" name="monto" required
-                        placeholder=Monto>
+                        placeholder=Monto min="1">
                     <button class="col" type="submit" id="boton">Realizar depósito</button>
                 </form>
             </div>

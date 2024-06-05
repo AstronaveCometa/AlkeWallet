@@ -69,7 +69,7 @@
                 <form th:action="@{/retirar}" th:object="${transaccionActual}" method="post">
                     <label for="monto" class="col">Monto a retirar: </label>
                     <input class="col" type="number" th:field="${transaccionActual.monto}" id="monto" name="monto"
-                        required placeholder=Monto>
+                        required placeholder=Monto min="1">
                     <button class="col" type="submit" id="boton">Realizar retiro</button>
                 </form>
             </div>

@@ -69,7 +69,7 @@
                 <form th:action="@{/transferir}" th:object="${transaccionActual}" method="post">
                     <label for="monto" class="col">Monto a transferir: </label>
                     <input class="col" type="number" th:field="${transaccionActual.monto}" id="monto" name="monto"
-                        required placeholder=Monto>
+                        required placeholder=Monto min="1">
                         <select th:id="IdReceptor" th:field="${transaccionActual.idReceptor}">
                             <option th:each="usuario : ${todosLosUsuarios}" th:value="${usuario.id}">
                                 <p th:text="${usuario.nombre}"></p> - <p th:text="${usuario.email}"></p>
