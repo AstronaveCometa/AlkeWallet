@@ -10,6 +10,8 @@ public interface TransaccionDao {
 	
 	public Transaccion obtenerTransaccionPorID(int ID);
 	
+	public List<Transaccion> obtenerTransaccionesPorIdUsuario(int ID);
+	
 	public void insertarTransaccion(Transaccion transaccion);
 	
 	public void eliminarTransaccionPorId(int ID);

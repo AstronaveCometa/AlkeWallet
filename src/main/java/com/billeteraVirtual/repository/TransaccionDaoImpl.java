@@ -55,4 +55,11 @@ public class TransaccionDaoImpl implements TransaccionDao {
 		jdbcTemplate.update(sql, ID);
 	}
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public List<Transaccion> obtenerTransaccionesPorIdUsuario(int ID) {
+		String sql = "SELECT * FROM Transacciones WHERE TRAN_USU_ID_SENDER = ? order by TRAN_DATE;";
+		return jdbcTemplate.query(sql, new Object[]{ID}, new TransaccionRowMapper());
+	}
+
 }

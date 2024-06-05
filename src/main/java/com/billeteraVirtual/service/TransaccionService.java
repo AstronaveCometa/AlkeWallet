@@ -27,6 +27,10 @@ public class TransaccionService {
 		return transaccionDao.obtenerTransaccionPorID(ID);
 	}
 	
+	public List<Transaccion> obtenerTransaccionesPorIdUsuario(int ID){
+		return transaccionDao.obtenerTransaccionesPorIdUsuario(ID);
+	}
+	
 	public void insertarTransaccion(Transaccion transaccion) {
 		transaccionDao.insertarTransaccion(transaccion);
 	}
@@ -55,16 +59,15 @@ public class TransaccionService {
 		}
 	}
 	
-	public Transaccion transferencia(Long monto, int IdEmisor, int IdReceptor) {
-		Transaccion transaccion = new Transaccion("transferencia", monto, IdEmisor, IdReceptor);
-		Usuario usuarioEmisor = usuarioDao.obtenerUsuarioPorId(IdEmisor);
-		Usuario usuarioReceptor = usuarioDao.obtenerUsuarioPorId(IdReceptor);
+	public Transaccion transferencia(Transaccion transaccion) {
+		Usuario usuarioEmisor = usuarioDao.obtenerUsuarioPorId(transaccion.getIdEmisor());
+		Usuario usuarioReceptor = usuarioDao.obtenerUsuarioPorId(transaccion.getIdReceptor());
 		Long saldoUsuarioEmisor = usuarioEmisor.getSaldo();
-		if(saldoUsuarioEmisor<monto) {
+		if(saldoUsuarioEmisor<transaccion.getMonto()) {
 			return null;
 		} else {
-			usuarioEmisor.setSaldo(usuarioEmisor.getSaldo() - monto);
-			usuarioReceptor.setSaldo(usuarioReceptor.getSaldo() + monto);
+			usuarioEmisor.setSaldo(usuarioEmisor.getSaldo() - transaccion.getMonto());
+			usuarioReceptor.setSaldo(usuarioReceptor.getSaldo() + transaccion.getMonto());
 			usuarioDao.actualizarUsuarioSaldo(usuarioEmisor);
 			usuarioDao.actualizarUsuarioSaldo(usuarioReceptor);
 			return transaccion;

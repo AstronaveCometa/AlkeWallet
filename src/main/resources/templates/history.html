@@ -48,37 +48,28 @@
     </header>
 
 
-    <main class="position-absolute top-50 start-50 translate-middle text-white">
-        <div class="container boxxy fondoGradiente">
-            <div th:if="${exito}">
-                <p class="exito rounded" th:text="${exito}"></p>
-            </div>
-            <div th:if="${error}">
-                <p class="error rounded" th:text="${error}"></p>
-            </div>
-            <div class="text-center">
-                <h2>Retiros</h2>
-            </div>
-            <div class="text-center">
-                <h2>
-                    <p>Tu saldo es: <span th:text="${usuarioActual.saldo}"></span></p>
-                </h2>
-            </div>
+    <main>
+        <table class="table table-info table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Emisor</th>
+                    <th scope="col">Receptor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="tr:${todasLasTransferencias}">
+                    <th th:text="${tr.tipo}"></th>
+                    <td th:text="${tr.monto}"></td>
+                    <td th:text="${tr.fecha}"></td>
+                    <td th:text="${tr.idEmisor}"></td>
+                    <td th:text="${tr.idReceptor}"></td>
+                </tr>
 
-            <div class="row">
-                <form th:action="@{/transferir}" th:object="${transaccionActual}" method="post">
-                    <label for="monto" class="col">Monto a transferir: </label>
-                    <input class="col" type="number" th:field="${transaccionActual.monto}" id="monto" name="monto"
-                        required placeholder=Monto>
-                        <select th:id="IdReceptor" th:field="${transaccionActual.idReceptor}">
-                            <option th:each="usuario : ${todosLosUsuarios}" th:value="${usuario.id}">
-                                <p th:text="${usuario.nombre}"></p> - <p th:text="${usuario.email}"></p>
-                            </option>
-                        </select>
-                    <button class="col" type="submit" id="boton">Realizar transferencia</button>
-                </form>
-            </div>
-        </div>
+            </tbody>
+        </table>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

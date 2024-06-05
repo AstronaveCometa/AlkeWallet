@@ -25,19 +25,16 @@
     <div class="container boxxy text-center">
       <h2>
         <p>Bienvenid@, <span th:text="${usuarioActual.nombre}"></span></p>
-
-
-
         <p>Tu saldo es: <span th:text="${usuarioActual.saldo}"></span></p>
       </h2>
-      </div>
-
-    <div class="container border-1">
+    </div>
+<br>
+    <div class="container">
       <div class="row">
         <!-- Botón para ir a Depósitos -->
         <div class="col-lg-3 col-md-12">
           <a th:href="@{/deposit}">
-            <button class="boxxy fondoGradiente botonMenu">
+            <button class="boxxy fondoGradiente botonMenu" height="100%">
               <div class="row text-center">
                 <h2>Depósitos</h2>
               </div>
@@ -50,7 +47,7 @@
         <!-- Botón para ir a Retiros -->
         <div class="col-lg-3 col-md-12">
           <a th:href="@{/sendmoney}">
-            <button class="boxxy fondoGradiente botonMenu">
+            <button class="boxxy fondoGradiente botonMenu" height="100%">
               <div class="row text-center">
                 <h2>Retiros</h2>
               </div>
@@ -63,7 +60,7 @@
         <!-- Botón para ir a Transferencias  -->
         <div class="col-lg-3 col-md-12">
           <a th:href="@{/transfer}">
-            <button class="boxxy fondoGradiente botonMenu">
+            <button class="boxxy fondoGradiente botonMenu" height="100%">
               <div class="row text-center">
                 <h2>Transferencias</h2>
               </div>
@@ -77,12 +74,12 @@
         <!-- Botón para ir a Historial  -->
         <div class="col-lg-3 col-md-12">
           <a th:href="@{/history}">
-            <button class="boxxy fondoGradiente botonMenu">
+            <button class="boxxy fondoGradiente botonMenu" height="100%">
               <div class="row text-center">
                 <h2>Historial de transacciones</h2>
               </div>
               <div class="row">
-                <img th:src="@{/img/Historial.png}" alt="Tarjeta" class="fotoMenu" width="100%"/>
+                <img th:src="@{/img/Historial.png}" alt="Tarjeta" class="fotoMenu" width="100%" />
               </div>
             </button>
           </a>
